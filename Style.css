@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+.start-btn {
+    cursor: pointer;
+    color: rgb(149, 216, 238);
+    font-size: 30px;
+    position: absolute;
+    top: 400px;
+    left: 300px;
+    width: 200px;
+    height: 75px;
+    background-color: green;
+}
+
+.start-btn {
+    cursor: pointer;
+    color: rgb(149, 216, 238);
+    font-size: 30px;
+    position: absolute;
+    top: 400px;
+    left: 300px;
+    width: 200px;
+    height: 75px;
+    background-color: rgba(49, 20, 214, 0.2);
+}
+
+.change-color-btn {
+    cursor: pointer;
+    color: rgb(149, 216, 238);
+    font-size: 30px;
+    position: absolute;
+    top: 200px;
+    left: 300px;
+    width: 200px;
+    height: 75px;
+    background-color: rgba(49, 20, 214, 0.2);
+}

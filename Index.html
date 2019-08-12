@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+    <section class="main-menu">
+        <button class="start-btn">Start</button>
+        <button class="change-color-btn">zmiana koloru statku</button>
+    </section>
+
+
+    <script src='Game.js'></script>
+    <script src='Menu.js'></script>
+    <script src='Entity.js'></script>
+    <script src='Button.js'></script>
+    <script src='Ship.js'></script>
+    <script src='Asteroid.js'></script>
+
+
+    <script>
+        const game = new Game();
+        const menu = new Menu();
+        let numbersOfAsteroids = 3;
+        const asteroidsContainer = [];
+
+
+        for (i = 0; i < numbersOfAsteroids; i++) {
+
+            asteroidsContainer.push(new Asteroid(game.ctx, game.rand(0, game.myCanvasWidth), game.rand(0, game
+                .myCanvasHeight), game.rand(20, 100)))
+
+        }
+
+
+
+        menu.handlingMenuButtons();
+
+
+        menu.mainMenu.addEventListener('click', () => {
+
+
+            menu.mainMenu.style.display = 'none';
+
+            menu.isActive = false;
+
+            if (menu.isActive === false) {
+
+                game.canvasDraw();
+
+                const ship = new Ship(game.ctx, 'yellow', game.myCanvasWidth / 2, game.myCanvasHeight / 2,
+                    40,
+                    300);
+
+                game.asteroidShipDistance(ship.positionX, ship.positionY, asteroidsContainer);
+
+
+                ship.control();
+
+                setInterval(() => {
+
+                    game.canvasDraw();
+                    ship.shape()
+                    ship.moveShip();
+                    ship.thrustShip();
+
+                    asteroidsContainer.forEach(asteroid => {
+                        asteroid.asteroidDraw(ship.positionX, ship.positionY);
+                        asteroid.asteroidMove();
+                    })
+
+
+                }, 1000 / 60)
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>
